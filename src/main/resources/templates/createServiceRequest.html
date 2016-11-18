@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Create Service Request</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div>
+		<div class="wrapper">
+			<th:block th:include="fragments/headerinc :: header"></th:block>
+			<div class="container transbox">
+				<form th:action="@{/save/}" method="post"
+					th:object="${serviceRequest}" class="form-horizontal">
+					<h3>Create Service Request</h3>
+					<hr />
+					<div class="form-group">
+
+						<label class="col-md-2 label">Location:</label>
+						<div class="input-group col-sm-12 col-md-12 col-lg-4">
+							<input type="text" th:field="*{location}" class="form-control"
+								id="cityStateZipString" required="required"
+								placeholder="Enter Neighborhood/City/State/Zip" />
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-md-2 label">Service Type:</label>
+						<div class="input-group">
+							<select th:field="*{serviceType}" class="form-control"
+								id="serviceType" required="required"
+								data-placeholder="Service Type">
+								<option value="">Select Service</option>
+								<option th:each="type : ${serviceTypes}" th:value="${type}"
+									th:text="${type}"></option>
+							</select>
+						</div>
+					</div>
+
+
+
+					<div class="form-group">
+						<label class="col-sm-2 col-md-2 col-lg-2 label">Note:</label>
+						<div class="input-group col-sm-8 col-md-8 col-lg-8 ">
+							<textarea class="form-control" required="required" rows="5"
+								maxlength="2000"
+								placeholder="Please provide as much information as possible."
+								th:field="*{note}"></textarea>
+						</div>
+					</div>
+
+
+
+
+					<div class="form-group">
+
+						<button type="submit" class="btn btn-primary">Request
+							Service</button>
+
+					</div>
+
+					
+					<div class="search-geo-details">
+						<input type="hidden" data-geo="lat" th:field="*{lat}" /> 
+						<input type="hidden" data-geo="lng" th:field="*{lng}" /> 
+					</div>
+
+				</form>
+			</div>
+
+		</div>
+		
+	</div>
+</body>
+</html>

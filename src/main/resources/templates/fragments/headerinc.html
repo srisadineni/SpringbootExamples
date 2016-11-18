@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="ttp://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container">
+		<div th:fragment="header">
+			<script th:src="@{/js/jquery.min.js}"></script>
+			<script th:src="@{/js/bootstrap.min.js}"></script>
+			<script
+				src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;key="></script>
+			
+			<script th:src="@{/js/jquery.geocomplete.min.js}"></script>
+			<script th:src="@{/js/app.js}"></script>
+			<!-- Fixed navbar -->
+		</div>
+
+
+
+	</div>
+</body>
+</html>
