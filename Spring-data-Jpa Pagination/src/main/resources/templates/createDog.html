@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Create Dog</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div>
+		<div class="wrapper">
+			<th:block th:include="fragments/headerinc :: header"></th:block>
+			<div class="container transbox">
+				<form th:action="@{/save/}" method="post"
+					th:object="${dog}" class="form-horizontal">
+					<h3>Create Dog</h3>
+					<hr />
+					<div class="form-group">
+
+						<label class="col-md-2 label">Name:</label>
+						<div class="input-group col-sm-12 col-md-12 col-lg-4">
+							<input type="text" th:field="*{name}" class="form-control"
+								id="name" required="required"
+								placeholder="name" />
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-md-2 label">Breed Type:</label>
+						<div class="input-group">
+							<select th:field="*{breed}" class="form-control"
+								id="breed" required="required"
+								data-placeholder="Breed Type">
+								<option value="">Select Breed</option>
+								<option th:each="type : ${breeds}" th:value="${type}"
+									th:text="${type}"></option>
+							</select>
+						</div>
+					</div>
+
+
+
+					<div class="form-group">
+
+						<label class="col-md-2 label">Age:</label>
+						<div class="input-group col-sm-12 col-md-12 col-lg-4">
+							<input type="number" th:field="*{age}" min="1" step="1"
+								data-bind="value:age" class="form-control"
+								id="age" required="required"
+								placeholder="name" />
+						</div>
+					</div>
+
+
+
+
+
+					<div class="form-group">
+
+						<button type="submit" class="btn btn-primary">Save</button>
+
+					</div>
+
+					
+					
+
+				</form>
+			</div>
+
+		</div>
+		
+	</div>
+</body>
+</html>

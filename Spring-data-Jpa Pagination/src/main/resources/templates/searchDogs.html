@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Service Request Search</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<th:block th:include="fragments/header :: header"></th:block>
+			<div class="container firstrow" th:if="${dogs!=null}">
+				<div class="col-sm-12 col-md-12 col-lg-12 transbox">
+					<div class="row ">
+						<div class="col-sm-12 col-md-12 col-lg-12 ">
+							<div class="col-sm-1 col-md-1 col-lg-1 ">
+								<a data-sortable="true"
+									th:href="@{/search/( page=${dogs.getNumber()},sortString=id,oldDirection=${oldDirection},oldSortString=${oldSortString})}">
+									<h4>ID</h4>
+								</a>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 ">
+								<a data-sortable="true"
+									th:href="@{/search/( page=${dogs.getNumber()},sortString=name,oldDirection=${oldDirection},oldSortString=${oldSortString})}">
+									<h4>Name</h4>
+								</a>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 ">
+								<a data-sortable="true"
+									th:href="@{/search/( page=${dogs.getNumber()},sortString=breed,oldDirection=${oldDirection},oldSortString=${oldSortString})}">
+									<h4>Breed</h4>
+								</a>
+							</div>
+							
+							<div class="col-sm-3 col-md-3 col-lg-3 ">
+								<a data-sortable="true"
+									th:href="@{/search/( page=${dogs.getNumber()},sortString=age,oldDirection=${oldDirection},oldSortString=${oldSortString})}">
+									<h4>Age</h4>
+								</a>
+							</div>
+							
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 row2  row"
+							th:each="s : ${dogs.content}">
+							<div class="col-sm-1 col-md-1 col-lg-1 ">
+								<span th:text="${s.id}"></span> 
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4 ">
+								<span th:text="${s.name}"></span>
+							</div>
+							<div class="col-sm-4 col-md-4 col-lg-4">
+								<span th:text="${s.breed}"></span>
+							</div>
+							
+							<div class="col-sm-3 col-md-3 col-lg-3">
+								<span th:text="${s.age}"></span>
+							</div>
+							
+						</div>
+						<div class="row" th:if="${dogs.getTotalPages() > 0}">
+							<div th:if="${dogs.getTotalPages() > 1}"
+								class="form-group col-sm-12 col-md-12 col-lg-12 pagination-centered">
+								<ul class="pagination">
+									<li th:class="${dogs.getNumber() == 0} ? disabled"><a
+										class="pageLink"
+										th:href="@{/search/( page=1,oldDirection=${oldDirection},oldSortString=${oldSortString})}">&laquo;</a></li>
+									<li th:class="${dogs.getNumber() == 0} ? disabled"><a
+										class="pageLink"
+										th:href="@{/search/( page=${dogs.getNumber()},oldDirection=${oldDirection},oldSortString=${oldSortString})}">&larr;</a></li>
+									<li
+										th:class="${dogs.getNumber() == (page - 1)} ? 'active pointer-disabled'"
+										th:each="page : ${#numbers.sequence(pager.getStartPage(), pager.getEndPage())}"><a
+										class="pageLink"
+										th:href="@{/search/( page=${page},oldDirection=${oldDirection},oldSortString=${oldSortString})}"
+										th:text="${page}"></a></li>
+									<li
+										th:class="${dogs.getNumber() + 1 == dogs.getTotalPages()} ? disabled"><a
+										class="pageLink"
+										th:href="@{/search/( page=${dogs.getNumber() + 2},oldDirection=${oldDirection},oldSortString=${oldSortString})}">&rarr;</a></li>
+									<li
+										th:class="${dogs.getNumber() + 1 == dogs.getTotalPages()} ? disabled"><a
+										class="pageLink"
+										th:href="@{/search/(page=${dogs.getTotalPages()})}">&raquo;</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			
+		</div>
+	</div>
+
+</body>
+</html>
