@@ -1,3 +1,4 @@
 *.classpath
 Spring-data-Jpa Geo Search/.project
 *.prefs
+*.project
