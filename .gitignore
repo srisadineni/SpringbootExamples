@@ -2,3 +2,7 @@
 Spring-data-Jpa Geo Search/.project
 *.prefs
 *.project
+*.log
+Spring-data-Jpa Pagination/.project
+*.project
+Spring-data-Jpa Pagination/.project

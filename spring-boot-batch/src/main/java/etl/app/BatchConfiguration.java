@@ -78,7 +78,7 @@ public class BatchConfiguration {
 		JdbcCursorItemReader<BaseTo> reader = new JdbcCursorItemReader<BaseTo>();
 		reader.setDataSource(dataSource);
 		reader.setSql("SELECT * FROM EMPLOYEE WHERE EMPLOYEE_ID >= " + fromId
-				+ "AND ID <= " + toId);
+				+ " AND EMPLOYEE_ID <= " + toId);
 		reader.setRowMapper(new BeanPropertyRowMapper<BaseTo>() {
 			@Override
 			public BaseTo mapRow(ResultSet rs, int rowNumber)

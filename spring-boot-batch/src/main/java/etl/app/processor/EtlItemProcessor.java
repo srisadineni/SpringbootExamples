@@ -53,10 +53,11 @@ public class EtlItemProcessor implements
 	}
 
 	private void addSection(BaseTo originalBaseTo, JdbcTemplate jdbcTemplate, String section) {
-		List<BaseTo> memElgList = getSectionList(originalBaseTo, jdbcTemplate, section);
+		List<BaseTo> sectionRows = getSectionList(originalBaseTo, jdbcTemplate, section);
 		String sectionText = "";
-		for(BaseTo baseTo: memElgList){
-			sectionText = sectionText==""?baseTo.getText():ROW_DELIMITER+baseTo.getText();
+		for(BaseTo baseTo: sectionRows){
+			String rowText = sectionText==""?baseTo.getText():ROW_DELIMITER+baseTo.getText();
+			sectionText = sectionText+rowText;
 		}
 		originalBaseTo.setText(originalBaseTo.getText()+ENTITY_DELIMITER+sectionText);
 	}
