@@ -123,7 +123,7 @@ public class BatchConfiguration {
 	@Bean
 	@Qualifier("fileWriter")
 	@StepScope
-	public FlatFileItemWriter<BaseTo> dentalRenewalMemberWriter1() {
+	public FlatFileItemWriter<BaseTo> flatFileItemWriter() {
 		FlatFileItemWriter<BaseTo> writer = new FlatFileItemWriter<BaseTo>();
 		writer.setResource(new FileSystemResource(folder + EMPLOYEE_FILE
 				+ fileSuffix));
