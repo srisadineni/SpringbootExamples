@@ -153,7 +153,7 @@ public class BatchConfiguration {
 	// end::jobstep[]
 
 	@Bean
-	public Job fmsDataLoadJob(JobBuilderFactory jobs,
+	public Job etlJob(JobBuilderFactory jobs,
 			@Qualifier("partitionStep") Step s) {
 
 		return jobs.get("batchJob").incrementer(new RunIdIncrementer()).flow(s)
